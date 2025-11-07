@@ -9,7 +9,7 @@ import { Picker } from '@react-native-picker/picker';
 const SearchScreen = ({ navigation }) => {
     const [query, setQuery] = useState('');
     const [meals, setMeals] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false); //false hoặc true
     const [error, setError] = useState('');
     const [listTitle, setListTitle] = useState('Some suggested dish');
     const [areas, setAreas] = useState([]);
@@ -107,9 +107,9 @@ const SearchScreen = ({ navigation }) => {
               selectedValue={selectedArea}
               onValueChange={(itemValue, itemIndex) => handleAreaSelect(itemValue)}
               style={styles.picker}
-              mode="dropdown" 
+              mode="dialog"
             >
-              <Picker.Item label="-- Country --" value={null} />
+              <Picker.Item label="-- Country --" value={null} style={styles.pickerText} />
               {areas.map(area => (
                 <Picker.Item key={area} label={area} value={area} />
               ))}
@@ -169,14 +169,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 10,
     marginBottom: 10,
-    borderWidth: 1,
     borderColor: 'gray',
-    borderRadius: 5,
+    borderRadius: 20,
     justifyContent: 'center', // Cần thiết cho iOS để Picker không quá cao
   },
   picker: {
-    height: 50,
+    height: 60,
     width: '100%',
+    backgroundColor: 'orange'
+  },
+  pickerText: {
+    color: 'black',
   },
   listTitle: {
     textAlign: 'center',

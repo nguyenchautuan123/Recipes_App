@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -45,6 +45,7 @@ export default function App() {
   return (
     //Bọc toàn bộ ứng dụng trong FavouritesProvider
     <SafeAreaView style={styles.container}>
+    <StatusBar style="auto" backgroundColor='black'/>
     <FavouritesProvider>
       <NavigationContainer>
         <Tab.Navigator

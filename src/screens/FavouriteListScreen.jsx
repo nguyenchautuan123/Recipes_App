@@ -14,7 +14,7 @@ const FavouriteListScreen = ({ navigation }) => {
             [
                 {
                     text: "Cancel",
-                    style: "cancel",
+                    style: "cancel", 
                 },
                 {
                     text: "Remove",
