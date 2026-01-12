@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, TextInput, Button, FlatList, StyleSheet, Text, ActivityIndicator, ScrollView, TouchableOpacity, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { searchMeals, getRandomMeals, listAllAreas, filterByArea } from '../api/TheMealDB';
+import Toast from 'react-native-toast-message';
 import RecipesCard from '../components/RecipesCard';
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';

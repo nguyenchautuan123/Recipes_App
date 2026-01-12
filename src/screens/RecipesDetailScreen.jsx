@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, ActivityIndicator, TouchableOpacity, Alert } from 'react-native';
+import Toast from 'react-native-toast-message';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getMealDetails } from '../api/TheMealDB';
 import { FavouritesContext } from '../context/FavouritesContext';
@@ -28,11 +29,18 @@ const RecipesDetailScreen = ({ route }) => {
 
   const handleAddFavourites = () => {
     if(isFavourite){
-      Alert.alert("Notification", "The meal has been in favourite list already");
-      // Optional: Nếu muốn nút này có chức năng xóa thì gọi removeFavourite(mealId)
+      Toast.show({
+        type: 'info',
+        text1: 'Notification',
+        text2: 'The meal is already in favourite list ❤',
+      });
     }else{
       addFavourites(meal);
-      Alert.alert("Notification", "The meal has been added to favourite list");
+      Toast.show({
+        type: 'success',
+        text1: 'Notification',
+        text2: 'The meal has been added to favourite list successfully ❤',
+      });
     }
   };
 

@@ -1,6 +1,8 @@
 import React from "react";
+import Toast from "react-native-toast-message";
 import { createContext, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { rem } from "nativewind";
 
 // 1. Tạo Context
 export const FavouritesContext = createContext();
@@ -48,6 +50,19 @@ export const FavouritesProvider = ({ children }) => {
         const newFavourites = favourites.filter((meal) => meal.idMeal !== mealId);
         setFavourites(newFavourites);
         saveFavourites(newFavourites);
+        if(newFavourites){
+            Toast.show({
+                type: 'success',
+                text1: 'Notification',
+                text2: 'The meal has been removed from favourite list successfully',
+            });
+        }else{
+            Toast.show({
+                type: 'error',
+                text1: 'Notification',
+                text2: 'The meal cannot removed from favourite list successfully',
+            });
+        }
     };
 
     // Hàm này sẽ xóa toàn bộ danh sách yêu thích
@@ -55,6 +70,19 @@ export const FavouritesProvider = ({ children }) => {
         const emptyFavourites = [];
         setFavourites(emptyFavourites);
         saveFavourites(emptyFavourites);
+        if(emptyFavourites){
+            Toast.show({
+              type: 'success',
+              text1: 'Notification',
+              text2: 'All meals have been removed from favourite list successfully 🩷',
+            });
+        }else{
+            Toast.show({
+                type: 'error',
+                text1: 'Error',
+                text2: 'Cannot remove all meals from favourite list ❌',
+            });
+        }
     };
 
     return(

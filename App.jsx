@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
+import Toast from 'react-native-toast-message';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -79,6 +80,7 @@ export default function App() {
         </Tab.Navigator>
       </NavigationContainer>
     </FavouritesProvider>
+    <Toast />
     </SafeAreaView>
   );
 };
